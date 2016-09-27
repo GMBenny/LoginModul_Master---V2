@@ -59,9 +59,9 @@ namespace LoginModul
             } while (doesVerificationCodeExist == true);
             return v.ToUpper();
         }
-        public static int GenerateNextUserID(ILoginDataMapper _dm)
+        public static long GenerateNextUserID(ILoginDataMapper _dm)
         {
-            int m = _dm.ReadMaxID();
+            long m = _dm.ReadMaxID();
             if (m < 0)
                 m = 100;
             else

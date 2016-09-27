@@ -9,7 +9,7 @@ namespace LoginModul
     public interface IDataMapper<T>
     {
         void Create(T Obj);
-        T Read(int Key);
+        T Read(long Key);
         void Update(T P);
         void Delete(T P);
     }

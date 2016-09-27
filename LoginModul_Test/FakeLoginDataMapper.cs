@@ -9,10 +9,10 @@ namespace LoginModul_Test
 {
     public class FakeLoginDataMapper : LoginModul.ILoginDataMapper
     {
-        Dictionary<int, Login> _db;
+        Dictionary<long, Login> _db;
         public FakeLoginDataMapper()
         {
-            _db = new Dictionary<int, Login>();
+            _db = new Dictionary<long, Login>();
         }
 
         public void Create(Login login)
@@ -30,7 +30,7 @@ namespace LoginModul_Test
             return (_db.Where(p => p.Value.VerificationCode == verificationCode).Count() > 0);
         }
 
-        public Login Read(int Key)
+        public Login Read(long Key)
         {
             return _db.FirstOrDefault(p => p.Value.UserID == Key).Value;
         }
@@ -40,7 +40,7 @@ namespace LoginModul_Test
             return _db.FirstOrDefault(p => p.Value.UnconfirmedEMail == EMail || p.Value.ConfirmedEMail == EMail).Value;
         }
 
-        public int ReadMaxID()
+        public long ReadMaxID()
         {
             if (_db.Count == 0)
                 return 999;

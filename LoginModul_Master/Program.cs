@@ -31,7 +31,7 @@ namespace LoginModul_Master
             bool DidItThoughAnException = false;
             try
             {
-                int userID = lm.Login("bejo@eal.dk", "uij54hgt");
+                long userID = lm.Login("bejo@eal.dk", "uij54hgt");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -42,7 +42,7 @@ namespace LoginModul_Master
 
             try
             {
-                int userID = lm.Login("bejo@eal.dk", "uij54hgt");
+                long userID = lm.Login("bejo@eal.dk", "uij54hgt");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -53,7 +53,7 @@ namespace LoginModul_Master
 
             try
             {
-                int userID = lm.Login("bejo@eal.dk", "uij54hgt");
+                long userID = lm.Login("bejo@eal.dk", "uij54hgt");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -64,7 +64,7 @@ namespace LoginModul_Master
 
             try
             {
-                int userID = lm.Login("bejo@eal.dk", "uij54hgt");
+                long userID = lm.Login("bejo@eal.dk", "uij54hgt");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -75,7 +75,7 @@ namespace LoginModul_Master
 
             try
             {
-                int userID = lm.Login("bejo@eal.dk", "123456");
+                long userID = lm.Login("bejo@eal.dk", "123456");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -89,7 +89,7 @@ namespace LoginModul_Master
                 string newVerificationCode = lm.InitiateResetPassword("bejo@eal.dk");
                 lm.ResetPassword("bejo@eal.dk", newVerificationCode, "NewPassword", "NewPassword");
 
-                int userID = lm.Login("bejo@eal.dk", "NewPassword");
+                long userID = lm.Login("bejo@eal.dk", "NewPassword");
                 DidItThoughAnException = false;
             }
             catch (Exception e)

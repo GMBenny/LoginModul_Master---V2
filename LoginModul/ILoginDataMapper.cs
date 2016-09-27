@@ -8,7 +8,7 @@ namespace LoginModul
 {
     public interface ILoginDataMapper: IDataMapper<Login>
     {
-        int ReadMaxID();
+        long ReadMaxID();
         Login Read(string EMail);
         bool DoesVerificationCodeExist(string verificationCode);
     }

@@ -49,7 +49,7 @@ namespace LoginModul
             return false;
         }
 
-        public Login Read(int UserID)
+        public Login Read(long UserID)
         {
             ConnectDB();
             sqlCommandString = "select UnconfirmedEMail,ConfirmedEMail,HashedPassword,BadLogins,VerificationCode,UserID from Login where UserID = '" + UserID.ToString() + "'";
@@ -65,7 +65,7 @@ namespace LoginModul
                 newL.HashedPassword = (long)reader["HashedPassword"];
                 newL.BadLogins = (int)reader["BadLogins"];
                 newL.VerificationCode = ((string)reader["VerificationCode"]).Trim();
-                newL.UserID = (int)reader["UserID"];
+                newL.UserID = (long)reader["UserID"];
             }
             CloseDB();
             return newL;
@@ -91,17 +91,17 @@ namespace LoginModul
             CloseDB();
             return newL;
         }
-        public int ReadMaxID()
+        public long ReadMaxID()
         {
             ConnectDB();
             sqlCommandString = "select top 1 userID from Login order by userID desc";
             cmd = new SqlCommand(sqlCommandString, dbconn);
             reader = cmd.ExecuteReader();
 
-            int UserID = -1;
+            long UserID = -1;
             if (reader.Read())
             {
-                UserID = (int)reader["UserID"];
+                UserID = (long)reader["UserID"];
             }
             CloseDB();
             return UserID;

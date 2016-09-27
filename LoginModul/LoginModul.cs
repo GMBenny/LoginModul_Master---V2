@@ -146,7 +146,7 @@ namespace LoginModul
                 Helper.CreateLogEntry(_logdm, "LoginModul.CreateLogin", "USER", "EMail does already exist: " + email);
                 throw new Exception(_errorMessage(1001));
             }
-            int uid = Helper.GenerateNextUserID(_logindm);
+            long uid = Helper.GenerateNextUserID(_logindm);
             string verificationCode = Helper.GenerateVerificationCode(_logindm);
             _logindm.Create(new Login() { ConfirmedEMail = null, UnconfirmedEMail = email, HashedPassword = Helper.HashText(password1), UserID = uid, VerificationCode = verificationCode, BadLogins = 0 });
 
@@ -181,7 +181,7 @@ namespace LoginModul
 
             Helper.CreateLogEntry(_logdm, "LoginModul.DeleteLogin", "INFO", "Slut - " + email + " is deleted");
         }
-        public int Login(string email, string password)
+        public long Login(string email, string password)
         {
             Helper.CreateLogEntry(_logdm, "LoginModul.Login", "INFO", "Start");
 

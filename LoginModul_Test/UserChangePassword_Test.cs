@@ -15,9 +15,9 @@ namespace LoginModul_Test
                 LoginModul.LoginModul lm = new LoginModul.LoginModul(new FakeLoginDataMapper(),null, new LoginModul.EMailCheck(FakeHelper.chkEMail), new LoginModul.PasswordCheck(FakeHelper.chkPassword), FakeHelper.FakeErrorMessage);
                 string verificationCode = lm.CreateLogin("bejo@eal.dk", "123456", "123456");
                 lm.ActivateUser("bejo@eal.dk", verificationCode);
-                int userID = lm.Login("bejo@eal.dk", "123456");
+                long userID = lm.Login("bejo@eal.dk", "123456");
                 lm.ChangePassword("bejo@eal.dk", "123456", "56789jkl", "56789jkl");
-                int userID2  = lm.Login("bejo@eal.dk", "56789jkl");
+                long userID2  = lm.Login("bejo@eal.dk", "56789jkl");
                 DidItThoughAnException = (userID != userID2);
             }
             catch (Exception e)
@@ -36,9 +36,9 @@ namespace LoginModul_Test
                 LoginModul.LoginModul lm = new LoginModul.LoginModul(new FakeLoginDataMapper(),null, new LoginModul.EMailCheck(FakeHelper.chkEMail), new LoginModul.PasswordCheck(FakeHelper.chkPassword), FakeHelper.FakeErrorMessage);
                 string verificationCode = lm.CreateLogin("bejo@eal.dk", "123456", "123456");
                 lm.ActivateUser("bejo@eal.dk", verificationCode);
-                int userID = lm.Login("bejo@eal.dk", "123456");
+                long userID = lm.Login("bejo@eal.dk", "123456");
                 lm.ChangePassword("bejo@eal.dk", "123456", "56789jkl", "56789jkl");
-                int userID2 = lm.Login("bejo@eal.dk", "123456");
+                long userID2 = lm.Login("bejo@eal.dk", "123456");
             }
             catch (Exception e)
             {

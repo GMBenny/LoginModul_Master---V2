@@ -14,12 +14,12 @@ namespace LoginModul_Test
                 LoginModul.LoginModul lm = new LoginModul.LoginModul(new LoginModul.MsSqlLoginDataMapper("Persist Security Info = False; Integrated Security = true; Initial Catalog = Prod_data; Server = localhost"),null, new LoginModul.EMailCheck(FakeHelper.chkEMail), new LoginModul.PasswordCheck(FakeHelper.chkPassword), FakeHelper.FakeErrorMessage);
                 string verificationCode = lm.CreateLogin("sletmig@eal.dk", "123456", "123456");
                 lm.ActivateUser("sletmig@eal.dk", verificationCode);
-                int i1 = lm.Login("sletmig@eal.dk", "123456");
+                long i1 = lm.Login("sletmig@eal.dk", "123456");
                 lm.ChangePassword("sletmig@eal.dk", "123456", "GlPassword", "GlPassword");
-                int i2 = lm.Login("sletmig@eal.dk", "GlPassword");
+                long i2 = lm.Login("sletmig@eal.dk", "GlPassword");
                 string a = lm.InitiateResetPassword("sletmig@eal.dk");
                 lm.ResetPassword("sletmig@eal.dk", a, "123-445", "123-445");
-                int i3 = lm.Login("sletmig@eal.dk", "123-445");
+                long i3 = lm.Login("sletmig@eal.dk", "123-445");
                 lm.DeleteLogin("sletmig@eal.dk", "123-445");
             }
             catch (Exception e)
@@ -37,13 +37,13 @@ namespace LoginModul_Test
                 string verificationCode = lm.CreateLogin("slETmig@eal.dk", "123456", "123456");
                 verificationCode = verificationCode.ToLower();
                 lm.ActivateUser("sletMIg@eal.dk", verificationCode);
-                int i1 = lm.Login("Sletmig@eal.dk", "123456");
+                long i1 = lm.Login("Sletmig@eal.dk", "123456");
                 lm.ChangePassword("sletmiG@eal.dk", "123456", "GlPassword", "GlPassword");
-                int i2 = lm.Login("sLetmIg@eal.dk", "GlPassword");
+                long i2 = lm.Login("sLetmIg@eal.dk", "GlPassword");
                 string a = lm.InitiateResetPassword("slEtmIg@eal.dk");
                 a = a.ToLower();
                 lm.ResetPassword("sLETmig@eal.dk", a, "123-445", "123-445");
-                int i3 = lm.Login("sleTMig@eal.dk", "123-445");
+                long i3 = lm.Login("sleTMig@eal.dk", "123-445");
                 lm.DeleteLogin("sletmIG@eal.dk", "123-445");
             }
             catch (Exception e)
@@ -61,7 +61,7 @@ namespace LoginModul_Test
 
             try
             {
-                int userID = lm.Login("inttest@eal.dk", "uij54hgt");
+                long userID = lm.Login("inttest@eal.dk", "uij54hgt");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -73,7 +73,7 @@ namespace LoginModul_Test
 
             try
             {
-                int userID = lm.Login("inttest@eal.dk", "uij54hgt");
+                long userID = lm.Login("inttest@eal.dk", "uij54hgt");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -85,7 +85,7 @@ namespace LoginModul_Test
 
             try
             {
-                int userID = lm.Login("inttest@eal.dk", "uij54hgt");
+                long userID = lm.Login("inttest@eal.dk", "uij54hgt");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -97,7 +97,7 @@ namespace LoginModul_Test
 
             try
             {
-                int userID = lm.Login("inttest@eal.dk", "uij54hgt");
+                long userID = lm.Login("inttest@eal.dk", "uij54hgt");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -109,7 +109,7 @@ namespace LoginModul_Test
 
             try
             {
-                int userID = lm.Login("inttest@eal.dk", "123456");
+                long userID = lm.Login("inttest@eal.dk", "123456");
                 DidItThoughAnException = false;
             }
             catch (Exception e)
@@ -124,7 +124,7 @@ namespace LoginModul_Test
                 string newVerificationCode = lm.InitiateResetPassword("inttest@eal.dk");
                 lm.ResetPassword("inttest@eal.dk", newVerificationCode, "NewPassword", "NewPassword");
 
-                int userID = lm.Login("inttest@eal.dk", "NewPassword");
+                long userID = lm.Login("inttest@eal.dk", "NewPassword");
                 DidItThoughAnException = false;
             }
             catch (Exception e)

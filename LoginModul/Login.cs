@@ -8,7 +8,7 @@ namespace LoginModul
 {
     public class Login
     {
-        public int UserID { get; set; }
+        public long UserID { get; set; }
         public string ConfirmedEMail { get; set; }
         public string UnconfirmedEMail { get; set; }
         public long HashedPassword { get; set; }
