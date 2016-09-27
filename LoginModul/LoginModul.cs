@@ -146,9 +146,9 @@ namespace LoginModul
                 Helper.CreateLogEntry(_logdm, "LoginModul.CreateLogin", "USER", "EMail does already exist: " + email);
                 throw new Exception(_errorMessage(1001));
             }
-            long uid = Helper.GenerateNextUserID(_logindm);
+            //long uid = Helper.GenerateNextUserID(_logindm);
             string verificationCode = Helper.GenerateVerificationCode(_logindm);
-            _logindm.Create(new Login() { ConfirmedEMail = null, UnconfirmedEMail = email, HashedPassword = Helper.HashText(password1), UserID = uid, VerificationCode = verificationCode, BadLogins = 0 });
+            _logindm.Create(new Login() { ConfirmedEMail = null, UnconfirmedEMail = email, HashedPassword = Helper.HashText(password1), VerificationCode = verificationCode, BadLogins = 0 });
 
             Helper.CreateLogEntry(_logdm, "LoginModul.CreateLogin", "INFO", "Slut - " + email + " created and verificationCode = " + verificationCode + " is returned");
 

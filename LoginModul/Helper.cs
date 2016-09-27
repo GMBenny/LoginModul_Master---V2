@@ -59,15 +59,15 @@ namespace LoginModul
             } while (doesVerificationCodeExist == true);
             return v.ToUpper();
         }
-        public static long GenerateNextUserID(ILoginDataMapper _dm)
-        {
-            long m = _dm.ReadMaxID();
-            if (m < 0)
-                m = 100;
-            else
-                m++;
-            return m;
-        }
+        //public static long GenerateNextUserID(ILoginDataMapper _dm)
+        //{
+        //    long m = _dm.ReadMaxID();
+        //    if (m < 0)
+        //        m = 100;
+        //    else
+        //        m++;
+        //    return m;
+        //}
         public static void chkPassword(string password, ErrorMessage errorMessage)
         {
             if (password == null)

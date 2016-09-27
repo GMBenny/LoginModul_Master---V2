@@ -21,94 +21,29 @@ namespace LoginModul_Master
             //int i3 = lm.Login("sletmig@eal.dk", "123-445");
             //lm.DeleteLogin("sletmig@eal.dk", "123-445");
 
-            LoginModul.ILoginDataMapper ldm = new LoginModul.MsSqlLoginDataMapper("Persist Security Info = False; Integrated Security = true; Initial Catalog = Prod_data; Server = localhost");
-            LoginModul.ILoginLogDataMapper lldm = new LoginModul.MsSqlLoginLogDataMapper("Persist Security Info = False; Integrated Security = true; Initial Catalog = Prod_data; Server = localhost");
+            LoginModul.ILoginDataMapper ldm = new LoginModul.MsSqlLoginDataMapper("Persist Security Info = False; Integrated Security = true; Initial Catalog = FamilyPlanner; Server = localhost");
+            LoginModul.ILoginLogDataMapper lldm = new LoginModul.MsSqlLoginLogDataMapper("Persist Security Info = False; Integrated Security = true; Initial Catalog = FamilyPlanner; Server = localhost");
 
             LoginModul.LoginModul lm = new LoginModul.LoginModul(ldm, lldm, new LoginModul.EMailCheck(LoginModul.Helper.chkEMail), new LoginModul.PasswordCheck(LoginModul.Helper.chkPassword), LoginModul.Helper.ErrorMessageDK);
             string verificationCode = lm.CreateLogin("bejo@eal.dk", "123456", "123456");
             lm.ActivateUser("bejo@eal.dk", verificationCode);
 
-            bool DidItThoughAnException = false;
-            try
-            {
-                long userID = lm.Login("bejo@eal.dk", "uij54hgt");
-                DidItThoughAnException = false;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.Print(e.Message);
-                DidItThoughAnException = e.Message.Substring(0, 7).Equals("Err3001");
-            }
+            long userID1 = lm.Login("bejo@eal.dk", "uij54hgt");
 
-            try
-            {
-                long userID = lm.Login("bejo@eal.dk", "uij54hgt");
-                DidItThoughAnException = false;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.Print(e.Message);
-                DidItThoughAnException = e.Message.Substring(0, 7).Equals("Err3001");
-            }
+            long userID2 = lm.Login("bejo@eal.dk", "uij54hgt");
 
-            try
-            {
-                long userID = lm.Login("bejo@eal.dk", "uij54hgt");
-                DidItThoughAnException = false;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.Print(e.Message);
-                DidItThoughAnException = e.Message.Substring(0, 7).Equals("Err3001");
-            }
+            long userID3 = lm.Login("bejo@eal.dk", "uij54hgt");
 
-            try
-            {
-                long userID = lm.Login("bejo@eal.dk", "uij54hgt");
-                DidItThoughAnException = false;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.Print(e.Message);
-                DidItThoughAnException = e.Message.Substring(0, 7).Equals("Err3002");
-            }
+            long userID4 = lm.Login("bejo@eal.dk", "uij54hgt");
 
-            try
-            {
-                long userID = lm.Login("bejo@eal.dk", "123456");
-                DidItThoughAnException = false;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.Print(e.Message);
-                DidItThoughAnException = e.Message.Substring(0, 7).Equals("Err3002");
-            }
+            long userID5 = lm.Login("bejo@eal.dk", "123456");
 
-            try
-            {
-                string newVerificationCode = lm.InitiateResetPassword("bejo@eal.dk");
-                lm.ResetPassword("bejo@eal.dk", newVerificationCode, "NewPassword", "NewPassword");
+            string newVerificationCode = lm.InitiateResetPassword("bejo@eal.dk");
+            lm.ResetPassword("bejo@eal.dk", newVerificationCode, "NewPassword", "NewPassword");
 
-                long userID = lm.Login("bejo@eal.dk", "NewPassword");
-                DidItThoughAnException = false;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.Print("6 => " + e.Message);
-                DidItThoughAnException = true;
-            }
+            long userID = lm.Login("bejo@eal.dk", "NewPassword");
 
-
-            try
-            {
-                lm.DeleteLogin("bejo@eal.dk", "NewPassword");
-                DidItThoughAnException = false;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.Print("Delete: " + e.Message);
-                DidItThoughAnException = true;
-            }
+            lm.DeleteLogin("bejo@eal.dk", "NewPassword");
         }
 
     }

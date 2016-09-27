@@ -15,7 +15,7 @@ namespace LoginModul
         public void Create(Login login)
         {
             ConnectDB();
-            sqlCommandString = "insert into Login(ConfirmedEMail,UnconfirmedEMail,HashedPassword,UserID,BadLogins,VerificationCode) values ('" + login.ConfirmedEMail + "','" + login.UnconfirmedEMail + "',"+ login.HashedPassword + "," + login.UserID + ", " + login.BadLogins.ToString() + ", '" + login.VerificationCode + "')";
+            sqlCommandString = "insert into Login(ConfirmedEMail,UnconfirmedEMail,HashedPassword,BadLogins,VerificationCode) values ('" + login.ConfirmedEMail + "','" + login.UnconfirmedEMail + "',"+ login.HashedPassword + ", " + login.BadLogins.ToString() + ", '" + login.VerificationCode + "')";
             cmd = new SqlCommand(sqlCommandString, dbconn);
             int i = cmd.ExecuteNonQuery();
             CloseDB();
@@ -86,31 +86,31 @@ namespace LoginModul
                 newL.HashedPassword = (long)reader["HashedPassword"];
                 newL.BadLogins = (Int16)reader["BadLogins"];
                 newL.VerificationCode = ((string)reader["VerificationCode"]).Trim();
-                newL.UserID = (int)reader["UserID"];
+                newL.UserID = (long)reader["UserID"];
             }
             CloseDB();
             return newL;
         }
-        public long ReadMaxID()
-        {
-            ConnectDB();
-            sqlCommandString = "select top 1 userID from Login order by userID desc";
-            cmd = new SqlCommand(sqlCommandString, dbconn);
-            reader = cmd.ExecuteReader();
+        //public long ReadMaxID()
+        //{
+        //    ConnectDB();
+        //    sqlCommandString = "select top 1 userID from Login order by userID desc";
+        //    cmd = new SqlCommand(sqlCommandString, dbconn);
+        //    reader = cmd.ExecuteReader();
 
-            long UserID = -1;
-            if (reader.Read())
-            {
-                UserID = (long)reader["UserID"];
-            }
-            CloseDB();
-            return UserID;
-        }
+        //    long UserID = -1;
+        //    if (reader.Read())
+        //    {
+        //        UserID = (long)reader["UserID"];
+        //    }
+        //    CloseDB();
+        //    return UserID;
+        //}
 
         public void Update(Login login)
         {
             ConnectDB();
-            sqlCommandString = "update Login set UnconfirmedEMail = '" + login.UnconfirmedEMail + "', ConfirmedEMail = '" + login.ConfirmedEMail + "',HashedPassword = " + login.HashedPassword + ",BadLogins = " + login.BadLogins + ", verificationCode = '" + login.VerificationCode + "' where UserID = " + login.UserID + "";
+            sqlCommandString = "update Login set UnconfirmedEMail = '" + login.UnconfirmedEMail + "', ConfirmedEMail = '" + login.ConfirmedEMail + "',HashedPassword = " + login.HashedPassword + ",BadLogins = " + login.BadLogins + ", verificationCode = '" + login.VerificationCode + "' where UserID = " + login.UserID;
             cmd = new SqlCommand(sqlCommandString, dbconn);
             int i = cmd.ExecuteNonQuery();
             CloseDB();
